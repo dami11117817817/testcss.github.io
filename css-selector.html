@@ -1,0 +1,298 @@
+<?php
+session_start();
+include('variables.php');
+include('fonctions.php');
+include('enreBDD.php');
+
+
+?><!DOCTYPE html>
+<html lang="<?php echo $lg; ?>">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="alternate" hreflang="it" href="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME']; ?>?langue=it" />
+<link rel="alternate" hreflang="de" href="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME']; ?>?langue=de" />
+<link rel="alternate" hreflang="es" href="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME']; ?>?langue=es" />
+<link rel="alternate" hreflang="nl" href="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME']; ?>?langue=nl" />
+
+<link rel="icon" href="favicon.ico" />
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<title>Variables of Grimport -<?php echo $g_societe; ?></title>
+<meta property="og:title" content="<?php echo tg('Comment programmer en Grimport ?'); ?> - <?php echo $g_societe; ?>" />
+<meta name="twitter:title" content="<?php echo tg('Comment programmer en Grimport ?'); ?> - <?php echo $g_societe; ?>"/>
+
+
+
+<meta name="language" content="<?php echo tg('FR'); ?>">
+<meta name="Author" content="<?php echo $g_societe; ?>" />
+<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+
+<meta property="og:image" content="logo_grand.png" />
+<meta property="og:url" content="https://<?php $g_url;?>" />
+<meta property="og:site_name" content="<?php echo $g_societe; ?>" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:domain" content="<?php echo $g_societe; ?>"/>
+<meta name="twitter:image" content="logo_grand.png"/>
+
+
+
+
+<link rel='stylesheet' id='woocommerce-smallscreen-css' href='wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreenbfce.css?ver=4.1.0' type='text/css' media='only screen and (max-width: 768px)' />
+<link rel='stylesheet' id='woocommerce-general-css' href='wp-content/plugins/woocommerce/assets/css/woocommercebfce.css?ver=4.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css' href='wp-content/themes/unite/inc/css/bootstrap.minc225.css?ver=5.4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='unite-icons-css' href='wp-content/themes/unite/inc/css/font-awesome.minc225.css?ver=5.4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='unite-style-css' href='wp-content/themes/unite/stylec225.css?ver=5.4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='ebs_dynamic_css-css' href='wp-content/plugins/easy-bootstrap-shortcodes/styles/ebs_dynamic_cssc225.css?ver=5.4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css' href='wp-content/plugins/jetpack/css/jetpack0dd0.css?ver=8.5' type='text/css' media='all' />
+<script type="text/javascript" src='wp-includes/js/jquery/jquery4a5f.js?ver=1.12.4-wp'></script>
+<script type="text/javascript" src='wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<script type="text/javascript" src='wp-content/themes/unite/inc/js/bootstrap.minc225.js?ver=5.4.1'></script>
+<script type="text/javascript" src='wp-content/themes/unite/inc/js/main.minc225.js?ver=5.4.1'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='wp-content/themes/unite/inc/js/html5shiv.min.js?ver=5.4.1'></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script type='text/javascript' src='wp-content/themes/unite/inc/js/respond.min.js?ver=5.4.1'></script>
+<![endif]-->
+
+<link rel='stylesheet' href='js/prism.css' type='text/css' />
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168079408-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-168079408-1');
+</script>
+
+</head>
+<body link="#000080" vlink="#800000" class="home page-template-default page page-id-1699 theme-unite woocommerce-no-js group-blog" dir="ltr" lang="fr-FR">
+<div id="page" class="hfeed site">
+<div class="container header-area">
+<header id="masthead" class="site-header col-sm-12" role="banner">
+<div class="site-branding col-md-6">
+<img src="img/logo.png" />
+</div>
+<div class="social-header col-md-6">
+</div>
+</header>
+</div>
+<nav class="navbar navbar-default" role="navigation">
+<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+</div>
+<div class="collapse navbar-collapse navbar-ex1-collapse"><ul id="menu-bootstrap-demo" class="nav navbar-nav"><li id="menu-item-1711" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-1699 current_page_item menu-item-1711 "><a title="<?php echo tg('Accueil'); ?>" href="index.php"><?php echo tg('Accueil'); ?></a></li>
+<li id="menu-item-1973" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1973"><a title="<?php echo tg('Nos activités'); ?>" href="activites.php"><?php echo tg('Nos activités'); ?></a></li><li id="menu-item-1973" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1973"><a title="<?php echo tg('Boutique des modules'); ?>" href="https://www.storeinterfacer.com/" target="_blank"><?php echo tg('Boutique des modules'); ?></a></li>
+<li id="menu-item-1973" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1973"><a title="<?php echo tg('Librairie de scripts'); ?>" href="scripts-grimport.php"><?php echo tg('Librairie de scripts'); ?></a></li>
+<li id="menu-item-1717" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1717 dropdown active"><a title="Grimport" href="#" data-toggle="dropdown" class="dropdown-toggle">Grimport<span class="caret"></span></a>
+<ul role="menu" class=" dropdown-menu">
+<li id="menu-item-1713" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1713"><a title="Grimport Crawler" href="grimport-crawler.php"><span class="glyphicon glyphicon-cloud-download"></span>&nbsp;Grimport Crawler</a></li>
+<li id="menu-item-186" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-186"><a title="<?php echo tg('Qu\'est-ce que le Grimport ?'); ?>" href="grimport.php"><span class="glyphicon glyphicon-question-sign"></span>&nbsp;<?php echo tg('Qu\'est-ce que le Grimport ?'); ?></a></li>
+<li id="menu-item-1746" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1746"><a title="<?php echo tg('Tutoriels vidéos'); ?>" href="tutorials.php"><span class="glyphicon glyphicon-facetime-video"></span>&nbsp;<?php echo tg('Tutoriels vidéos'); ?></a></li>
+<li id="menu-item-1746" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1746"><a title="<?php echo tg('Comment programmer en Grimport ?'); ?>" href="programmer.php"><span class="glyphicon glyphicon-education"></span>&nbsp;<?php echo tg('Comment programmer en Grimport ?'); ?></a></li>
+<li id="menu-item-1718" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1718"><a title="<?php echo tg('Les fonctions du Grimport'); ?>" href="fonctions-grimport.php"><span class="glyphicon glyphicon-align-justify"></span>&nbsp;<?php echo tg('Les fonctions du Grimport'); ?></a></li>
+</ul>
+</li>
+</ul><ul class="nav navbar-nav navbar-right"><li>
+<div id="mes_langues">
+	<div class="" id="panneau_lang" onmouseover="document.getElementById('first-languages').className='panneau_lang_ul_hover'" onmouseout="document.getElementById('first-languages').className='panneau_lang_ul'">
+	
+			<p class="selected_language">
+			<img src="img/langue/<?php
+$monUrl = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; 
+echo $lg; ?>.jpg" alt="<?php echo $lg; ?>">
+		</p>
+									<ul id="first-languages" class="panneau_lang_ul">
+
+					<li<?php if($lg=='fr') echo' class="selected_language"'; ?>>
+                    <a href="langue.php?lg=fr&url=<?php echo urlencode($monUrl); ?>" title="Français">
+								<img src="img/langue/fr.jpg" alt="fr" height="11" width="16">
+                                </a>
+						</li>
+<li<?php if($lg=='en') echo' class="selected_language"'; ?>>
+																<a href="langue.php?lg=en&url=<?php echo urlencode($monUrl); ?>" title="English">
+
+												<img src="img/langue/en.jpg" alt="en" height="11" width="16">
+							</a>
+						</li>
+<li<?php if($lg=='de') echo' class="selected_language"'; ?>>
+																<a href="langue.php?lg=de&url=<?php echo urlencode($monUrl); ?>" title="Deutsch">
+
+												<img src="img/langue/de.jpg" alt="de" height="11" width="16">
+							</a>
+						</li>
+<li<?php if($lg=='es') echo' class="selected_language"'; ?>>
+																<a href="langue.php?lg=es&url=<?php echo urlencode($monUrl); ?>" title="Español">
+
+												<img src="img/langue/es.jpg" alt="es" height="11" width="16">
+							</a>
+						</li>
+<li<?php if($lg=='it') echo' class="selected_language"'; ?>>
+																<a href="langue.php?lg=it&url=<?php echo urlencode($monUrl); ?>" title="Italiano">
+
+												<img src="img/langue/it.jpg" alt="it" height="11" width="16">
+							</a>
+						</li>
+<li<?php if($lg=='nl') echo' class="selected_language"'; ?>>
+																<a href="langue.php?lg=nl&url=<?php echo urlencode($monUrl); ?>" title="Nederlands">
+
+												<img src="img/langue/nl.jpg" alt="nl" height="11" width="16">
+							</a>
+						</li>
+					
+				</ul>
+	</div>
+
+</div>
+</li><li><a class="woomenucart-menu-item" href="contact.php" title="Contact"><i class="fa fa-envelope"></i> <?php echo tg('Contact'); ?></a></li></ul></div> </div>
+</nav>
+<div id="content" class="site-content container"> <div class="row pull-left">
+<div id="primary" class="content-area col-sm-12 col-md-12">
+<main id="main" class="site-main" role="main">
+<article id="post-735" class="post-735 page type-page status-publish hentry">
+<header class="entry-header page-header">
+<h1 class="entry-title"><?php echo tg('Comment programmer en Grimport ?'); ?></h1>
+</header>
+<div class="entry-content">
+
+<a class="btn btn-primary btn-lg" href="contact.php" style=" float:right;margin-bottom:5px; margin-left:7px"><i class="glyphicon glyphicon-user"></i> 
+<?php echo tg('Nous demander de l\'aide pour la programmation en Grimport'); ?>
+</a>
+
+
+<a class="btn btn-primary btn-lg" href="https://translate.google.com/translate?sl=fr&tl=<?php echo $lg; ?>&u=<?php echo url_page(); ?>" target="_blank" style="margin-bottom:5px; margin-left:7px"><i class="glyphicon glyphicon-globe"></i> TRANSLATE THIS PAGE</a>
+
+
+<div>
+    <div class="sommaire"><div class="sommaine-titre">Summary</div>
+<ul>
+	<li><a href="#cc">Item1</a></li>
+	<li><a href="exemple2.php">Item2</a></li>
+	<li><a href="lien.php">Item3</a>
+	  <ul>
+	    <li><a href="lien.php">Sous item 1</a></li>
+	    <li><a href="lien.php">Sous item 2</a></li>
+	    </ul>
+	</li>
+	<li><a href="lien.php">Item4</a></li>
+	</ul>
+</div>
+
+
+
+   
+</div>    
+    
+<div class="container">
+        <h1>Welcome to CSS Selector Test Page</h1>
+
+        <div class="introduction">
+
+            <p>My name is Grimport Crawler<span id="surName"></span></p>
+
+            <p id="myFunction">I am a programming language.</p>
+
+            <p>Here are some other programming languages:</p>
+
+        </div>
+
+        <ul id="listofLanguages">
+            <li>Java</li>
+            <li>Python</li>
+            <li>Groovy</li>
+            <li>C++</li>
+        </ul>
+
+        <p>All these languages are used in the world<br> 
+          But I really like Grimport.</p>
+
+
+        <h3>Here are the 4 programming languages in table form:</h3>
+        <p><b>I like each of them:</b></p>
+
+        <table class="table table-bordered">
+            <tr>
+                <th>Name</th>
+                <th>Date</th>
+            </tr>
+            <tr>
+                <td>Java</td>
+                <td>1996</td>
+            </tr>
+            <tr>
+                <td>Python</td>
+                <td>1991</td>
+            </tr>
+            <tr>
+                <td>Groovy</td>
+                <td>2003</td>
+            </tr>
+            <tr>
+                <td>C++</td>
+                <td><code>1985</code></td>
+            </tr>
+        </table>
+    </div>
+            <p><br/>
+          </p>
+          </div>
+          </article>
+          </main>
+          </div>
+          </div>
+          </div>
+          <footer id="colophon" class="site-footer" role="contentinfo">
+            <div class="site-info container">
+              <div class="row">
+                <nav role="navigation" class="col-md-6">
+                  <script type="text/javascript">
+function ouvre_popup(page) {
+ window.open(page,"share","menubar=no, status=no, scrollbars=no, menubar=no, width=600, height=400,top=300,left=300");
+}
+</script>
+                    
+                  <ul id="menu-my-personal" class="nav footer-nav clearfix">
+                    <li id="menu-item-1664" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1664"><a href="conditions-generales.php"><?php echo tg('Mentions Légales et Conditions d\'Utilisation'); ?></a></li>
+                    <li><a href="javascript:ouvre_popup('https://www.facebook.com/sharer/sharer.php?kid_directed_site=0&sdk=joey&u=<?php echo urlencode(url_page()); ?>&display=popup&ref=plugin&src=share_button')"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="javascript:ouvre_popup('https://twitter.com/home?status=<?php echo urlencode(url_page()); ?> <?php echo $g_societe_court; ?> : <?php echo tg('Web-mining, modules e-commerce, import de catalogue, fouille de données, veille tarifiaire'); ?>')"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="javascript:ouvre_popup('https://www.linkedin.com/shareArticle?mini=true&url=<?php echo urlencode(url_page()); ?>&title=&summary=<?php echo $g_societe_court; ?> : <?php echo tg('Web-mining, modules e-commerce, import de catalogue, fouille de données, veille tarifiaire'); ?>&source=')"><i class="fa fa-linkedin"></i></a></li>
+                </ul> </nav>
+                <div class="copyright col-md-6">
+                <a href="index.php"><?php echo $g_societe; ?> Copyright &copy;<script type="text/javascript">document.write(new Date().getFullYear());</script> <?php echo tg('Tous droits réservés'); ?></a> </div>
+              </div>
+            </div>
+          </footer>
+          </div>
+          <script type="text/javascript" src='wp-content/plugins/contact-form-7/includes/js/scripts9738.js?ver=5.1.8'></script>
+          <script type="text/javascript" src='wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min44fd.js?ver=2.70'></script>
+            
+          <script type="text/javascript" src='js/prism.js'></script>
+            
+            
+</html>
